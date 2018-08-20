@@ -1,21 +1,15 @@
 package de.god.usecase;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("The AOP UseCase")
 @RunWith(MockitoJUnitRunner.class)
@@ -48,6 +42,15 @@ class AopUseCaseTest
         Mockito.verify(aopUseCase).addOne(testNumber);
     }
 
+    @DisplayName("is used to add 1 to a number without Mock")
+    @Test
+    void addOneWithoutMock() {
+        AopUseCase aopUseCase = new AopUseCase();
+        Long testNumber = 1L;
+        final Long result = aopUseCase.addOne(testNumber);
+        assertEquals(2L, result.longValue());
+    }
+
     @DisplayName("is used to return a random UUID")
     @Test
     void getRandomUUID()
@@ -75,12 +78,13 @@ class AopUseCaseTest
         @Test
         void changeState()
         {
+            final String initialState = "";
             final String stateChange1 = "1";
             final String stateChange2 = "2";
             final String stateChange3 = "3";
-            Mockito.when(aopUseCase.changeTripleState(stateChange1, stateChange2, stateChange3)).thenReturn(this.state + "123");
+            Mockito.when(aopUseCase.changeTripleState(initialState, stateChange1, stateChange2, stateChange3)).thenReturn(this.state + "123");
 
-            final String changedState = aopUseCase.changeTripleState(stateChange1, stateChange2, stateChange3);
+            final String changedState = aopUseCase.changeTripleState(initialState, stateChange1, stateChange2, stateChange3);
             assertEquals(changedState, this.state + "123");
         }
 
