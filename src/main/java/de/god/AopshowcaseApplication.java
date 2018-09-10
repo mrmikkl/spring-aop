@@ -1,4 +1,4 @@
-package de.god.aopshowcase;
+package de.god;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
