@@ -1,4 +1,4 @@
-package de.god.special;
+package de.god.usecase.special;
 
 import de.god.domain.Adder;
 import org.springframework.stereotype.Service;

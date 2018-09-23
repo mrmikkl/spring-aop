@@ -24,9 +24,9 @@ public class LogAspect {
         return joinPoint.proceed();
     }
 
-    @Around("execution(* de.god.special..*.*(..))")
+    @Around("execution(* de.god.usecase.special..*.*(..))")
     public Object logTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        logger.info("##### @Around(\"execution(* de.god.special..*.*(..))\")");
+        logger.info("##### @Around(\"execution(* de.god.usecase.special..*.*(..))\")");
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         Object returnValue = joinPoint.proceed();

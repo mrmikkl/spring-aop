@@ -1,13 +1,13 @@
 package de.god.webservice;
 
-import de.god.special.SpecialUseCase;
 import de.god.usecase.AopUseCase;
+import de.god.usecase.special.SpecialUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/aop")
+@RequestMapping("/api/aop")
 public class AopController {
     private AopUseCase aopUseCase;
     private SpecialUseCase specialUseCase;
